@@ -1,0 +1,174 @@
+.page {
+  display: grid;
+  gap: 4rem;
+  padding: 0 2rem 6rem;
+  max-width: 1100px;
+  margin: -12rem auto 0;
+}
+
+.hero {
+  display: grid;
+  gap: 1.2rem;
+  max-width: 720px;
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  color: #b68239;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+  margin: 0;
+}
+
+.hero p {
+  margin: 0;
+  color: #4a433c;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.twoColumn h2 {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+.twoColumn p {
+  margin-bottom: 0;
+  color: #534c45;
+  line-height: 1.7;
+}
+
+.milestones {
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  padding: 3rem 3rem 3.5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.milestones h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.milestones ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.milestones li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.year {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #b68239;
+}
+
+.milestones h3 {
+  margin: 0 0 0.6rem;
+}
+
+.milestones p {
+  margin: 0;
+  color: #4a433c;
+}
+
+.values {
+  background: linear-gradient(140deg, #fdfaf6 0%, #f4efe7 100%);
+  border-radius: 28px;
+  padding: 3rem 3rem 3.2rem;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: 2rem;
+}
+
+.values h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.valueCard {
+  background: #fff;
+  border-radius: 22px;
+  padding: 1.8rem 1.6rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.06);
+  display: grid;
+  gap: 0.9rem;
+  text-align: center;
+  align-items: start;
+}
+
+.valueIcon {
+  font-size: 2.2rem;
+}
+
+.valueCard h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.valueCard p {
+  margin: 0;
+  color: #4d463f;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .milestones li {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .milestones {
+    border-radius: 22px;
+    padding: 2.5rem 2.2rem;
+  }
+
+  .values {
+    border-radius: 22px;
+    padding: 2.5rem 2rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}

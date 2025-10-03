@@ -1,0 +1,78 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+  display: grid;
+  gap: 3rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  letter-spacing: 0.3em;
+  color: #b68239;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.hero p {
+  margin: 0;
+  color: #4b443d;
+  line-height: 1.7;
+}
+
+.panel {
+  background: linear-gradient(150deg, #ffffff 0%, #f5efe7 100%);
+  border-radius: 26px;
+  padding: 2.5rem;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.panel h2 {
+  margin: 0;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.8rem;
+  color: #3f3a35;
+}
+
+.panel li {
+  position: relative;
+  line-height: 1.5;
+}
+
+.note {
+  margin: 0;
+  color: #524c45;
+}
+
+.note a {
+  color: #b68239;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 4rem 1.5rem 5rem;
+    gap: 2.5rem;
+  }
+
+  .panel {
+    padding: 2rem;
+  }
+}
