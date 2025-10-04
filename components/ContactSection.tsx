@@ -24,7 +24,7 @@ export function ContactSection({ phone, email, address, hours, mapEmbedUrl }: Co
           <h2>Un accueil chaleureux au cœur de Coulonges-Thouarsais</h2>
           <p>
             Passez nous voir pour un déjeuner sur le pouce, un dîner avec accords mets-vins ou simplement
-            pour saluer l'équipe. Nous nous chargeons du reste.
+            pour saluer l&apos;équipe. Nous nous chargeons du reste.
           </p>
         </div>
         <div className={styles.layout}>
@@ -67,7 +67,7 @@ export function ContactSection({ phone, email, address, hours, mapEmbedUrl }: Co
               target="_blank"
               rel="noopener noreferrer"
               className={styles.mapLink}
-              aria-label={`Ouvrir l'itinéraire vers ${address} dans Google Maps`}
+              aria-label={`Ouvrir l&apos;itinéraire vers ${address} dans Google Maps`}
             >
               <span className={styles.mapTag}>{streetLine}</span>
               <span className={styles.mapTag}>{cityLine}</span>

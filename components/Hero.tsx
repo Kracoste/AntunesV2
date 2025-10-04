@@ -15,7 +15,7 @@ export function Hero({ imageSrc, imageAlt = "Salle du restaurant", tagline, ctaL
     <section className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.copy}>
-          <span className={styles.kicker}>L'Antunes</span>
+          <span className={styles.kicker}>L&apos;Antunes</span>
           <h1>{tagline}</h1>
           <p>
             Une table intimiste où la cuisine de saison rencontre une cave de vins vivants. Chaque

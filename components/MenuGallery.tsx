@@ -50,8 +50,8 @@ export function MenuGallery({ images }: MenuGalleryProps) {
         <p className={styles.kicker}>Nos cartes</p>
         <h2>Découvrez les menus en détail</h2>
         <p>
-          Cliquez sur chaque visuel pour l'ouvrir. Un second clic agrandit le menu tout en restant
-          entièrement visible, quelle que soit la taille de l'écran.
+          Cliquez sur chaque visuel pour l&apos;ouvrir. Un second clic agrandit le menu tout en restant
+          entièrement visible, quelle que soit la taille de l&apos;écran.
         </p>
       </div>
       <div className={styles.grid}>
@@ -87,7 +87,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               type="button"
               className={styles.closeButton}
               onClick={close}
-              aria-label="Fermer l'image agrandie"
+              aria-label="Fermer l&apos;image agrandie"
             >
               ×
             </button>
@@ -112,7 +112,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               </div>
             </button>
             <p className={helperTextClassName}>
-              Cliquez sur l'image pour {isZoomed ? "revenir à la vue standard" : "l'afficher en plein écran"}.
+              Cliquez sur l&apos;image pour {isZoomed ? "revenir à la vue standard" : "l&apos;afficher en plein écran"}.
             </p>
           </div>
         </div>
