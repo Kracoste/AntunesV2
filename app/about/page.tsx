@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import styles from "../../styles/AboutPage.module.css";
 
 export const metadata: Metadata = {
@@ -9,22 +10,25 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    icon: "🌱",
+    icon: "/images/produit.jpg",
     title: "Local & Bio",
     description:
-      "Nous privilégions les circuits courts et les produits biologiques pour vous garantir fraîcheur et qualité."
+      "Nous privilégions les circuits courts et les produits biologiques pour vous garantir fraîcheur et qualité.",
+    isImage: true
   },
   {
     icon: "👨‍🍳",
     title: "Savoir-faire",
     description:
-      "Notre équipe met tout son savoir-faire à votre service pour une cuisine authentique et raffinée."
+      "Notre équipe met tout son savoir-faire à votre service pour une cuisine authentique et raffinée.",
+    isImage: false
   },
   {
-    icon: "❤️",
+    icon: "/images/plat.jpg",
     title: "Passion",
     description:
-      "Chaque plat est préparé avec amour et passion pour vous offrir une expérience inoubliable."
+      "Chaque plat est préparé avec amour et passion pour vous offrir une expérience inoubliable.",
+    isImage: true
   }
 ];
 
@@ -67,7 +71,17 @@ export default function AboutPage() {
           {values.map((value) => (
             <article key={value.title} className={styles.valueCard}>
               <span className={styles.valueIcon} aria-hidden="true">
-                {value.icon}
+                {value.isImage ? (
+                  <Image
+                    src={value.icon}
+                    alt={value.title}
+                    width={220}
+                    height={220}
+                    className={styles.valueImage}
+                  />
+                ) : (
+                  value.icon
+                )}
               </span>
               <h3>{value.title}</h3>
               <p>{value.description}</p>
