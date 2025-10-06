@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        imageSrc="/images/hero.jpg"
+        imageSrc="/images/image.png"
         tagline={restaurantInfo.heroTagline}
         ctaLabel={restaurantInfo.heroCta}
         ctaHref="/#menu"

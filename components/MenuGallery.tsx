@@ -17,6 +17,31 @@ type MenuGalleryProps = {
 export function MenuGallery({ images }: MenuGalleryProps) {
   const [activeImage, setActiveImage] = useState<MenuImage | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const getCurrentIndex = useCallback(() => {
+    if (!activeImage) return -1;
+    return images.findIndex((img) => img.id === activeImage.id);
+  }, [activeImage, images]);
+
+  const goToNext = useCallback(() => {
+    const currentIndex = getCurrentIndex();
+    if (currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % images.length;
+    setActiveImage(images[nextIndex]);
+    setIsZoomed(false);
+  }, [getCurrentIndex, images]);
+
+  const goToPrevious = useCallback(() => {
+    const currentIndex = getCurrentIndex();
+    if (currentIndex === -1) return;
+    const previousIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    setActiveImage(images[previousIndex]);
+    setIsZoomed(false);
+  }, [getCurrentIndex, images]);
 
   const close = useCallback(() => {
     setActiveImage(null);
@@ -28,18 +53,44 @@ export function MenuGallery({ images }: MenuGalleryProps) {
     setIsZoomed(false);
   }, []);
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrevious();
+    }
+  };
+
   useEffect(() => {
     if (!activeImage) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         close();
+      } else if (event.key === "ArrowRight") {
+        goToNext();
+      } else if (event.key === "ArrowLeft") {
+        goToPrevious();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeImage, close]);
+  }, [activeImage, close, goToNext, goToPrevious]);
 
   const lightboxClassName = isZoomed ? `${styles.lightbox} ${styles.lightboxZoomed}` : styles.lightbox;
   const helperTextClassName = isZoomed ? styles.helperTextHidden : styles.helperText;
@@ -81,6 +132,9 @@ export function MenuGallery({ images }: MenuGalleryProps) {
           aria-modal="true"
           aria-label={activeImage.alt}
           onClick={close}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <div className={styles.lightboxInner} onClick={(event) => event.stopPropagation()}>
             <button
@@ -91,6 +145,33 @@ export function MenuGallery({ images }: MenuGalleryProps) {
             >
               ×
             </button>
+            
+            <button
+              type="button"
+              className={styles.navButton}
+              style={{ left: '20px' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              aria-label="Menu précédent"
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              className={styles.navButton}
+              style={{ right: '20px' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              aria-label="Menu suivant"
+            >
+              ›
+            </button>
+
             <button
               type="button"
               className={`${styles.lightboxImageButton} ${
@@ -112,7 +193,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               </div>
             </button>
             <p className={helperTextClassName}>
-              Cliquez sur l&apos;image pour {isZoomed ? "revenir à la vue standard" : "l&apos;afficher en plein écran"}.
+              Cliquez sur l&apos;image pour {isZoomed ? "revenir à la vue standard" : "l&apos;afficher en plein écran"}. Utilisez les flèches pour naviguer.
             </p>
           </div>
         </div>
