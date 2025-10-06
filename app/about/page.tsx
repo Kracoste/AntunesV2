@@ -18,7 +18,7 @@ const values = [
     icon: "👨‍🍳",
     title: "Savoir-faire",
     description:
-      "Notre équipe met tout son savoir-faire au service d&apos;une cuisine authentique et raffinée."
+      "Notre équipe met tout son savoir-faire à votre service pour une cuisine authentique et raffinée."
   },
   {
     icon: "❤️",
