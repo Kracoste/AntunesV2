@@ -145,3 +145,18 @@
     align-self: flex-end;
   }
 }
+
+/* Support iOS safe area */
+@supports (padding: max(0px)) {
+  .grid {
+    padding-left: max(2rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right));
+  }
+}
+
+/* Optimisation pour écrans tactiles */
+@media (hover: none) and (pointer: coarse) {
+  .item {
+    gap: 1.5rem;
+  }
+}

@@ -10,7 +10,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 export const metadata: Metadata = {
   title: "Restaurant Antunes",
   description:
-    "Cuisine gastronomique de saison, vins vivants et accueil chaleureux au cœur de Paris. Découvrez le menu et réservez votre table.",
+    "Cuisine gastronomique de saison, accueil chaleureux au cœur de Coulonges-Thouarsais. Découvrez les menus et réservez votre table.",
   metadataBase: new URL("https://www.restaurant-antunes.fr"),
   alternates: {
     canonical: "/"
@@ -18,9 +18,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Restaurant Antunes",
     description:
-      "Cuisine gastronomique de saison, vins vivants et table conviviale en plein cœur de Paris.",
+      "Cuisine de saison, table conviviale en plein cœur de Coulonges-Thouarsais.",
     locale: "fr_FR",
     type: "website"
+  },
+  // Optimisation viewport pour tous les appareils
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover'
   }
 };
 

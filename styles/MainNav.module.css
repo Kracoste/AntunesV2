@@ -2,6 +2,8 @@
   position: static;
   background: transparent;
   border: none;
+  /* Améliorer la stabilité du layout */
+  contain: layout;
 }
 
 .container {
@@ -29,10 +31,14 @@
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   transition: transform 0.2s ease;
+  /* Optimisation de rendu */
+  -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  -webkit-transition: -webkit-transform 0.2s ease;
 }
 
 .logoImage:hover {
   transform: scale(1.02);
+  -webkit-transform: scale(1.02);
 }
 
 .nav {
@@ -202,6 +208,22 @@
   .reserve {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* Support iOS safe area */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(1.4rem, env(safe-area-inset-left));
+    padding-right: max(1.4rem, env(safe-area-inset-right));
+  }
+}
+
+/* Optimisation pour écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logoImage {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 }
 

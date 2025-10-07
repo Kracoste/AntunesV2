@@ -182,3 +182,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Support iOS safe area */
+@supports (padding: max(0px)) {
+  .page {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+/* Optimisation pour écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .valueImage {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}

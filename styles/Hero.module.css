@@ -2,6 +2,8 @@
   position: relative;
   padding: 0 0 3rem;
   margin-top: -12rem;
+  /* Assurer la compatibilité des performances sur tous les navigateurs */
+  will-change: auto;
 }
 
 .inner {
@@ -108,16 +110,24 @@
   height: clamp(340px, 58vh, 520px);
   box-shadow: 0 35px 60px rgba(27, 24, 21, 0.18);
   background: linear-gradient(160deg, rgba(195, 118, 74, 0.18), rgba(255, 255, 255, 0.4));
+  /* Forcer l'accélération matérielle pour des animations fluides */
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .image {
   object-fit: cover;
   transform: scale(1.02);
   transition: transform 0.3s ease;
+  /* Optimisation pour tous les navigateurs */
+  -webkit-transform: scale(1.02);
+  -webkit-transition: -webkit-transform 0.3s ease;
 }
 
 .imageFrame:hover .image {
   transform: scale(1.06);
+  -webkit-transform: scale(1.06);
 }
 
 @media (max-width: 1024px) {
@@ -162,5 +172,23 @@
 
   .imageFrame {
     border-radius: 26px;
+  }
+}
+
+/* Media queries spécifiques pour tablettes */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .inner {
+    gap: 3rem;
+  }
+  
+  .copy h1 {
+    font-size: clamp(2.4rem, 3.8vw, 3.2rem);
+  }
+}
+
+/* Support pour écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .imageFrame {
+    box-shadow: 0 35px 60px rgba(27, 24, 21, 0.22);
   }
 }

@@ -58,11 +58,15 @@
 .thumbnailImage {
   object-fit: cover;
   transition: transform 0.28s ease;
+  /* Optimisation cross-browser */
+  -webkit-transition: -webkit-transform 0.28s ease;
+  will-change: transform;
 }
 
 .thumbnail:hover .thumbnailImage,
 .thumbnail:focus-visible .thumbnailImage {
   transform: scale(1.05);
+  -webkit-transform: scale(1.05);
 }
 
 .lightbox {
@@ -74,6 +78,9 @@
   justify-items: center;
   padding: 2rem;
   z-index: 200;
+  /* Améliorer la performance sur mobile */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .lightboxZoomed {
@@ -257,5 +264,27 @@
 
   .helperText {
     font-size: 0.78rem;
+  }
+}
+
+/* Support iOS safe area pour la lightbox */
+@supports (padding: max(0px)) {
+  .lightbox {
+    padding-left: max(1.1rem, env(safe-area-inset-left));
+    padding-right: max(1.1rem, env(safe-area-inset-right));
+    padding-top: max(1.1rem, env(safe-area-inset-top));
+    padding-bottom: max(1.1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Optimisation pour écrans tactiles */
+@media (hover: none) and (pointer: coarse) {
+  .thumbnail {
+    cursor: pointer;
+  }
+  
+  .navButton {
+    padding: 1.2rem 1.8rem;
+    font-size: 2.5rem;
   }
 }
