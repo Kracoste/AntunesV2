@@ -39,7 +39,7 @@ export default function AboutPage() {
         <span className={styles.kicker}>Notre histoire</span>
         <h1>Une table pensée comme une maison</h1>
         <p>
-          L'Antunes est né d&apos;une intuition simple : marier l&apos;esprit d&apos;accueil d&apos;une maison familiale. 
+          L&apos;Antunes est né d&apos;une intuition simple : marier l&apos;esprit d&apos;accueil d&apos;une maison familiale. 
           Ici, chaque service commence par un mot doux, un regard attentif et un plat qui raconte un terroir.
         </p>
       </section>
