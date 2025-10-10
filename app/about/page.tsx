@@ -39,9 +39,8 @@ export default function AboutPage() {
         <span className={styles.kicker}>Notre histoire</span>
         <h1>Une table pensée comme une maison</h1>
         <p>
-          Le Restaurant Antunes est né d&apos;une intuition simple : marier l&apos;exigence gastronomique à
-          l&apos;esprit d&apos;accueil d&apos;une maison familiale. Ici, chaque service commence par un mot doux, un
-          regard attentif et un plat qui raconte un terroir.
+          L'Antunes est né d&apos;une intuition simple : marier l&apos;esprit d&apos;accueil d&apos;une maison familiale. 
+          Ici, chaque service commence par un mot doux, un regard attentif et un plat qui raconte un terroir.
         </p>
       </section>
       <section className={styles.twoColumn}>

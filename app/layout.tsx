@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Restaurant Antunes",
+  title: "L'Antunes",
   description:
-    "Cuisine gastronomique de saison, accueil chaleureux au cœur de Coulonges-Thouarsais. Découvrez les menus et réservez votre table.",
+    "Cuisine de saison, accueil chaleureux au cœur de Coulonges-Thouarsais. Découvrez les menus et réservez votre table.",
   metadataBase: new URL("https://www.restaurant-antunes.fr"),
   alternates: {
     canonical: "/"

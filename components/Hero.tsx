@@ -18,8 +18,7 @@ export function Hero({ imageSrc, imageAlt = "Salle du restaurant", tagline, ctaL
           <span className={styles.kicker}>L&apos;Antunes</span>
           <h1>{tagline}</h1>
           <p>
-            Une table intimiste où la cuisine de saison rencontre une cave de vins vivants. Chaque
-            service est pensé comme un moment suspendu, avec une attention portée au rythme de vos
+            Chaque service est pensé comme un moment suspendu, avec une attention portée au rythme de vos
             repas et aux produits de nos artisans partenaires.
           </p>
           <div className={styles.actions}>

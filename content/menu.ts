@@ -71,7 +71,7 @@ export const menuGallery = [
 export const restaurantInfo = {
   name: "Restaurant Antunes",
   heroTagline: "Cuisine de saison, vins vivants et accueil chaleureux au cœur de la ville.",
-  heroCta: "Décourvrir nos menus",
+  heroCta: "Découvrir nos menus",
   phone: "+33 1 23 45 67 89",
   email: "contact@restaurant-antunes.fr",
   address: "3 Rue des Cailloux, 79330 Coulonges-Thouarsais",

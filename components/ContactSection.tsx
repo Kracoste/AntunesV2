@@ -23,7 +23,7 @@ export function ContactSection({ phone, email, address, hours, mapEmbedUrl }: Co
           <span className={styles.kicker}>Nous rendre visite</span>
           <h2>Un accueil chaleureux au cœur de Coulonges-Thouarsais</h2>
           <p>
-            Passez nous voir pour un déjeuner sur le pouce, un dîner avec accords mets-vins ou simplement
+            Passez nous voir pour un déjeuner sur le pouce, un dîner ou simplement
             pour saluer l&apos;équipe. Nous nous chargeons du reste.
           </p>
         </div>
