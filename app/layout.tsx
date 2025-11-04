@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { MainNav } from "../components/MainNav";
+import { Footer } from "../components/Footer";
+import { restaurantInfo } from "../content/menu";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -42,6 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <MainNav />
         <main>{children}</main>
+        <Footer socialMedia={restaurantInfo.socialMedia} />
       </body>
     </html>
   );

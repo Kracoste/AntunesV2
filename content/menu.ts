@@ -61,10 +61,11 @@ export const menuCategories: MenuCategory[] = [
 ];
 
 export const menuGallery = [
+  { id: "menu-3", src: "/images/Menu3.jpeg", alt: "Menu du jour" },
+  { id: "menu-5", src: "/images/Menu5.jpeg", alt: "Carte des desserts" },
   { id: "menu-1", src: "/images/Menu1.jpeg", alt: "Menu dégustation - Printemps" },
   { id: "menu-2", src: "/images/Menu2.jpeg", alt: "Menu dégustation - Été" },
-  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" },
-  { id: "menu-5", src: "/images/Menu5.jpeg", alt: "Carte des desserts" }
+  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" }
 ];
 
 export const restaurantInfo = {
@@ -79,5 +80,10 @@ export const restaurantInfo = {
     "Samedi - Dimanche : 9h00 - 00h00",
   ],
   mapEmbedUrl:
-    "https://www.google.com/maps?q=3+Rue+des+Cailloux,+79330+Coulonges-Thouarsais&output=embed"
+    "https://www.google.com/maps?q=3+Rue+des+Cailloux,+79330+Coulonges-Thouarsais&output=embed",
+  socialMedia: {
+    instagram: "https://www.instagram.com/lantunesrestaurant",
+    facebook: "https://www.facebook.com/profile.php?id=61583136790603",
+    tiktok: "https://www.tiktok.com/@lantunesrestaurant?lang=fr"
+  }
 };
