@@ -61,11 +61,11 @@ export const menuCategories: MenuCategory[] = [
 ];
 
 export const menuGallery = [
-  { id: "menu-1", src: "/images/menu1.png", alt: "Menu dégustation - Printemps" },
-  { id: "menu-2", src: "/images/menu2.png", alt: "Menu dégustation - Été" },
-  { id: "menu-3", src: "/images/menu3.png", alt: "Menu déjeuner" },
-  { id: "menu-4", src: "/images/menu4.png", alt: "Carte des vins vivants" },
-  { id: "menu-5", src: "/images/menu5.png", alt: "Carte des desserts" }
+  { id: "menu-1", src: "/images/Menu1.jpeg", alt: "Menu dégustation - Printemps" },
+  { id: "menu-2", src: "/images/Menu2.jpeg", alt: "Menu dégustation - Été" },
+  { id: "menu-3", src: "/images/Menu3.jpeg", alt: "Menu déjeuner" },
+  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" },
+  { id: "menu-5", src: "/images/Menu5.jpeg", alt: "Carte des desserts" }
 ];
 
 export const restaurantInfo = {
@@ -73,7 +73,7 @@ export const restaurantInfo = {
   heroTagline: "Cuisine de saison, vins vivants et accueil chaleureux au cœur de la ville.",
   heroCta: "Découvrir nos menus",
   phone: "+33 1 23 45 67 89",
-  email: "contact@restaurant-antunes.fr",
+  email: "lantunesrestaurant@gmail.com",
   address: "3 Rue des Cailloux, 79330 Coulonges-Thouarsais",
   hours: [
     "Lundi - Vendredi : 9h00 - 18h00",
