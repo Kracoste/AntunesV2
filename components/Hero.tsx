@@ -37,7 +37,8 @@ export function Hero({ imageSrc, imageAlt = "Salle du restaurant", tagline, ctaL
               alt={imageAlt}
               fill
               priority
-              sizes="(min-width: 1200px) 520px, (min-width: 768px) 60vw, 90vw"
+              quality={100}
+              sizes="(min-width: 1200px) 600px, (min-width: 768px) 70vw, 95vw"
               className={styles.image}
             />
           </div>

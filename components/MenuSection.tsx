@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { MenuCategory } from "../lib/types";
 import styles from "../styles/MenuSection.module.css";
 
@@ -28,11 +27,11 @@ export function MenuSection({ categories }: MenuSectionProps) {
               {category.items.map((item) => (
                 <li key={item.name} className={styles.item}>
                   <div className={styles.itemMedia}>
-                    <Image
+                    <img
                       src={item.image}
                       alt={item.name}
-                      width={180}
-                      height={140}
+                      width={240}
+                      height={160}
                       className={styles.itemImage}
                     />
                   </div>

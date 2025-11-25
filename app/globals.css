@@ -55,9 +55,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  /* Empêcher le flou sur les images redimensionnées */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 /* Éviter les problèmes de sélection sur mobile */

@@ -206,6 +206,5 @@
 /* Optimisation pour écrans haute résolution */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .valueImage {
-    image-rendering: -webkit-optimize-contrast;
   }
 }

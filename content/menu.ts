@@ -10,13 +10,13 @@ export const menuCategories: MenuCategory[] = [
         name: "Huîtres de Cancale",
         description: "Servies avec une mignonnette au champagne et zestes d'agrumes.",
         price: "18 €",
-        image: "/images/menu/entrees-huitres.png"
+        image: "/images/produit.jpg"
       },
       {
         name: "Velouté de potimarron",
         description: "Crème légère à la noisette torréfiée, croustillant de sarrasin.",
         price: "12 €",
-        image: "/images/menu/entrees-veloute.png"
+        image: "/images/plat.jpg"
       }
     ]
   },
@@ -29,13 +29,13 @@ export const menuCategories: MenuCategory[] = [
         name: "Bar de ligne en croûte de sel",
         description: "Fenouil confit, beurre blanc au yuzu, chips de pain de seigle.",
         price: "32 €",
-        image: "/images/menu/plats-bar.png"
+        image: "/images/plat.jpg"
       },
       {
         name: "Filet de bœuf maturé",
         description: "Purée fumée de pommes de terre, jus corsé au cacao, jeunes légumes glacés.",
         price: "38 €",
-        image: "/images/menu/plats-boeuf.png"
+        image: "/images/produit.jpg"
       }
     ]
   },
@@ -48,13 +48,13 @@ export const menuCategories: MenuCategory[] = [
         name: "Soufflé chocolat grand cru",
         description: "Chantilly au poivre timut, crumble cacao pécan.",
         price: "14 €",
-        image: "/images/menu/desserts-souffle.png"
+        image: "/images/plat.jpg"
       },
       {
         name: "Tarte fine aux pommes",
         description: "Caramel au beurre salé, glace au lait ribot.",
         price: "12 €",
-        image: "/images/menu/desserts-tarte.png"
+        image: "/images/produit.jpg"
       }
     ]
   }

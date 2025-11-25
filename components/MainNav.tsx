@@ -1,5 +1,4 @@
-﻿import Image from "next/image";
-import Link from "next/link";
+﻿import Link from "next/link";
 import styles from "../styles/MainNav.module.css";
 
 const navItems = [
@@ -12,12 +11,11 @@ export function MainNav() {
     <header className={styles.wrapper}>
       <div className={styles.container}>
         <Link href="/" className={styles.logoLink}>
-          <Image
+          <img
             src="/images/antunes2.png"
             alt="Restaurant Antunes"
             width={200}
             height={90}
-            priority
             className={styles.logoImage}
           />
         </Link>

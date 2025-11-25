@@ -216,12 +216,3 @@
     padding-right: max(1.4rem, env(safe-area-inset-right));
   }
 }
-
-/* Optimisation pour écrans haute résolution */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .logoImage {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-}
-

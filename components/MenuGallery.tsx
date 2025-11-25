@@ -118,8 +118,9 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               src={image.src}
               alt={image.alt}
               fill
+              quality={100}
               className={styles.thumbnailImage}
-              sizes="(min-width: 1024px) 18vw, (min-width: 768px) 30vw, 90vw"
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 40vw, 95vw"
             />
           </button>
         ))}
@@ -187,8 +188,9 @@ export function MenuGallery({ images }: MenuGalleryProps) {
                   alt={activeImage.alt}
                   fill
                   priority
+                  quality={100}
                   className={styles.lightboxImage}
-                  sizes="(min-width: 1400px) 960px, (min-width: 768px) 80vw, 90vw"
+                  sizes="(min-width: 1400px) 1200px, (min-width: 768px) 90vw, 95vw"
                 />
               </div>
             </button>
