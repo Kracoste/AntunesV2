@@ -1,7 +1,7 @@
 import { Hero } from "../components/Hero";
 import { MenuGallery } from "../components/MenuGallery";
 import { ContactSection } from "../components/ContactSection";
-import { menuGallery, restaurantInfo } from "../content/menu";
+import { drinkGallery, menuGallery, restaurantInfo } from "../content/menu";
 
 export default function HomePage() {
   return (
@@ -12,7 +12,7 @@ export default function HomePage() {
         ctaLabel={restaurantInfo.heroCta}
         ctaHref="/#menu"
       />
-      <MenuGallery images={menuGallery} />
+      <MenuGallery menuImages={menuGallery} drinkImages={drinkGallery} />
       <ContactSection
         phone={restaurantInfo.phone}
         email={restaurantInfo.email}

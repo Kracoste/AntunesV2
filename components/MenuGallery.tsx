@@ -1,54 +1,56 @@
 ﻿"use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/MenuGallery.module.css";
 
-type MenuImage = {
+type GalleryImage = {
   id: string;
   src: string;
   alt: string;
 };
 
 type MenuGalleryProps = {
-  images: MenuImage[];
+  menuImages: GalleryImage[];
+  drinkImages: GalleryImage[];
 };
 
-export function MenuGallery({ images }: MenuGalleryProps) {
-  const [activeImage, setActiveImage] = useState<MenuImage | null>(null);
+export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
+  const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const minSwipeDistance = 50;
+  const galleryImages = useMemo(() => [...menuImages, ...drinkImages], [menuImages, drinkImages]);
 
   const getCurrentIndex = useCallback(() => {
     if (!activeImage) return -1;
-    return images.findIndex((img) => img.id === activeImage.id);
-  }, [activeImage, images]);
+    return galleryImages.findIndex((img) => img.id === activeImage.id);
+  }, [activeImage, galleryImages]);
 
   const goToNext = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % images.length;
-    setActiveImage(images[nextIndex]);
+    const nextIndex = (currentIndex + 1) % galleryImages.length;
+    setActiveImage(galleryImages[nextIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, images]);
+  }, [getCurrentIndex, galleryImages]);
 
   const goToPrevious = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const previousIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setActiveImage(images[previousIndex]);
+    const previousIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
+    setActiveImage(galleryImages[previousIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, images]);
+  }, [getCurrentIndex, galleryImages]);
 
   const close = useCallback(() => {
     setActiveImage(null);
     setIsZoomed(false);
   }, []);
 
-  const openImage = useCallback((image: MenuImage) => {
+  const openImage = useCallback((image: GalleryImage) => {
     setActiveImage(image);
     setIsZoomed(false);
   }, []);
@@ -101,31 +103,71 @@ export function MenuGallery({ images }: MenuGalleryProps) {
         <p className={styles.kicker}>Nos cartes</p>
         <h2>Découvrez les menus en détail</h2>
         <p>
-          Cliquez sur chaque visuel pour l&apos;ouvrir. Un second clic agrandit le menu tout en restant
-          entièrement visible, quelle que soit la taille de l&apos;écran.
+          Retrouvez d&apos;un côté l&apos;ensemble de nos menus et desserts, et de l&apos;autre les cartes des vins
+          et boissons. Cliquez sur un visuel pour l&apos;ouvrir et zoomer.
         </p>
       </div>
-      <div className={styles.grid}>
-        {images.map((image) => (
-          <button
-            key={image.id}
-            type="button"
-            className={styles.thumbnail}
-            onClick={() => openImage(image)}
-            aria-label={`Agrandir ${image.alt}`}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              priority
-              loading="eager"
-              quality={85}
-              className={styles.thumbnailImage}
-              sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
-            />
-          </button>
-        ))}
+
+      <div className={styles.galleries}>
+        <div className={styles.galleryBlock}>
+          <div className={styles.blockHeader}>
+            <p className={styles.blockKicker}>Cartes du menu</p>
+            <h3>Menus & desserts</h3>
+            <p>Les cartes du moment pour vos déjeuners, dîners et douceurs à partager.</p>
+          </div>
+          <div className={styles.grid}>
+            {menuImages.map((image) => (
+              <button
+                key={image.id}
+                type="button"
+                className={styles.thumbnail}
+                onClick={() => openImage(image)}
+                aria-label={`Agrandir ${image.alt}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority
+                  loading="eager"
+                  quality={85}
+                  className={styles.thumbnailImage}
+                  sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.galleryBlock}>
+          <div className={styles.blockHeader}>
+            <p className={styles.blockKicker}>Cartes des boissons</p>
+            <h3>Vins vivants & cocktails</h3>
+            <p>Découvrez la sélection de vins, softs et boissons maison élaborée par l&apos;équipe.</p>
+          </div>
+          <div className={styles.grid}>
+            {drinkImages.map((image) => (
+              <button
+                key={image.id}
+                type="button"
+                className={styles.thumbnail}
+                onClick={() => openImage(image)}
+                aria-label={`Agrandir ${image.alt}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority
+                  loading="eager"
+                  quality={85}
+                  className={styles.thumbnailImage}
+                  sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {activeImage ? (
