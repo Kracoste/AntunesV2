@@ -65,7 +65,9 @@ export const menuGallery = [
   { id: "menu-5", src: "/images/Menu5.jpeg", alt: "Carte des desserts" },
   { id: "menu-1", src: "/images/Menu1.jpeg", alt: "Menu dégustation - Printemps" },
   { id: "menu-2", src: "/images/Menu2.jpeg", alt: "Menu dégustation - Été" },
-  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" }
+  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" },
+  { id: "boisson-1", src: "/images/Boisson/Boisson.jpg", alt: "Carte des boissons" },
+  { id: "boisson-2", src: "/images/Boisson/Boisson1.jpg", alt: "Carte des boissons - Suite" }
 ];
 
 export const restaurantInfo = {

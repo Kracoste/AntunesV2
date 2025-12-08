@@ -118,9 +118,11 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               src={image.src}
               alt={image.alt}
               fill
-              quality={100}
+              priority
+              loading="eager"
+              quality={85}
               className={styles.thumbnailImage}
-              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 40vw, 95vw"
+              sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
             />
           </button>
         ))}
