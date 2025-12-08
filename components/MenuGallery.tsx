@@ -112,7 +112,7 @@ export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
         <div className={styles.galleryBlock}>
           <div className={styles.blockHeader}>
             <p className={styles.blockKicker}>Cartes du menu</p>
-            <h3>Menus & desserts</h3>
+            <h3>Menus </h3>
             <p>Les cartes du moment pour vos déjeuners, dîners et douceurs à partager.</p>
           </div>
           <div className={styles.grid}>
@@ -142,7 +142,7 @@ export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
         <div className={styles.galleryBlock}>
           <div className={styles.blockHeader}>
             <p className={styles.blockKicker}>Cartes des boissons</p>
-            <h3>Vins vivants & cocktails</h3>
+            <h3>Vins & cocktails</h3>
             <p>Découvrez la sélection de vins, softs et boissons maison élaborée par l&apos;équipe.</p>
           </div>
           <div className={styles.grid}>
