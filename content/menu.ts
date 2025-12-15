@@ -61,11 +61,11 @@ export const menuCategories: MenuCategory[] = [
 ];
 
 export const menuGallery = [
-  { id: "menu-3", src: "/images/Menu3.jpeg", alt: "Menu du jour" },
-  { id: "menu-1", src: "/images/Menu1.jpeg", alt: "Menu dégustation - Printemps" },
-  { id: "menu-2", src: "/images/Menu2.jpeg", alt: "Menu dégustation - Été" },
-  { id: "menu-5", src: "/images/Menu5.jpeg", alt: "Carte des desserts" },
-  { id: "menu-4", src: "/images/Menu4.jpeg", alt: "Carte des vins vivants" }
+  { id: "menu-5", src: "/images/Menu5.jpg", alt: "Carte des desserts" },
+  { id: "menu-4", src: "/images/Menu4.jpg", alt: "Carte des vins vivants" },
+  { id: "menu-3", src: "/images/Menu3.jpg", alt: "Menu dégustation - Été" },
+  { id: "menu-1", src: "/images/Menu1.jpg", alt: "Menu du jour" },
+  { id: "menu-2", src: "/images/Menu2.jpg", alt: "Menu dégustation - Printemps" }
 ];
 
 export const drinkGallery = [
