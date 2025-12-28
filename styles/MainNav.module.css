@@ -1,7 +1,8 @@
 ﻿.wrapper {
-  position: static;
+  position: relative;
   background: transparent;
   border: none;
+  z-index: 100;
   /* Améliorer la stabilité du layout */
   contain: layout;
 }

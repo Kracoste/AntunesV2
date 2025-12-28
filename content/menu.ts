@@ -65,12 +65,9 @@ export const menuGallery = [
   { id: "menu-5", src: "/images/Menu5.jpg", alt: "Carte des desserts" },
   { id: "menu-3", src: "/images/Menu3.jpg", alt: "Menu dégustation - Été" },
   { id: "menu-1", src: "/images/Menu1.jpg", alt: "Menu du jour" },
-  { id: "menu-2", src: "/images/Menu2.jpg", alt: "Menu dégustation - Printemps" }
-];
-
-export const drinkGallery = [
-  { id: "boisson-1", src: "/images/Boisson/Boisson.jpg", alt: "Carte des boissons" },
-  { id: "boisson-2", src: "/images/Boisson/Boisson1.jpg", alt: "Carte des boissons - Suite" }
+  { id: "menu-2", src: "/images/Menu2.jpg", alt: "Menu dégustation - Printemps" },
+  { id: "boisson-1", src: "/images/Boisson/boisson1.jpeg", alt: "Carte des boissons" },
+  { id: "boisson-2", src: "/images/Boisson/boisson2.jpeg", alt: "Carte des boissons - Suite" }
 ];
 
 export const restaurantInfo = {

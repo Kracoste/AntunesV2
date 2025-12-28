@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/MenuGallery.module.css";
 
@@ -11,39 +11,37 @@ type GalleryImage = {
 };
 
 type MenuGalleryProps = {
-  menuImages: GalleryImage[];
-  drinkImages: GalleryImage[];
+  images: GalleryImage[];
 };
 
-export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
+export function MenuGallery({ images }: MenuGalleryProps) {
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const minSwipeDistance = 50;
-  const galleryImages = useMemo(() => [...menuImages, ...drinkImages], [menuImages, drinkImages]);
 
   const getCurrentIndex = useCallback(() => {
     if (!activeImage) return -1;
-    return galleryImages.findIndex((img) => img.id === activeImage.id);
-  }, [activeImage, galleryImages]);
+    return images.findIndex((img) => img.id === activeImage.id);
+  }, [activeImage, images]);
 
   const goToNext = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % galleryImages.length;
-    setActiveImage(galleryImages[nextIndex]);
+    const nextIndex = (currentIndex + 1) % images.length;
+    setActiveImage(images[nextIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, galleryImages]);
+  }, [getCurrentIndex, images]);
 
   const goToPrevious = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const previousIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1;
-    setActiveImage(galleryImages[previousIndex]);
+    const previousIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    setActiveImage(images[previousIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, galleryImages]);
+  }, [getCurrentIndex, images]);
 
   const close = useCallback(() => {
     setActiveImage(null);
@@ -116,7 +114,7 @@ export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
             <p>Les cartes du moment pour vos déjeuners, dîners et douceurs à partager.</p>
           </div>
           <div className={styles.grid}>
-            {menuImages.map((image) => (
+            {images.slice(0, 5).map((image) => (
               <button
                 key={image.id}
                 type="button"
@@ -146,7 +144,7 @@ export function MenuGallery({ menuImages, drinkImages }: MenuGalleryProps) {
             <p>Découvrez la sélection de vins, softs et boissons maison élaborée par l&apos;équipe.</p>
           </div>
           <div className={styles.grid}>
-            {drinkImages.map((image) => (
+            {images.slice(5).map((image) => (
               <button
                 key={image.id}
                 type="button"
