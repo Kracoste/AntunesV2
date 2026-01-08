@@ -55,6 +55,13 @@ export function Footer({ socialMedia }: FooterProps) {
         <p className={styles.copyright}>
           © {new Date().getFullYear()} Restaurant L&apos;Antunes. Tous droits réservés.
         </p>
+        
+        <p className={styles.credit}>
+          Site réalisé par{" "}
+          <a href="tel:0685643340" className={styles.creditLink}>
+            Webinova
+          </a>
+        </p>
       </div>
     </footer>
   );
