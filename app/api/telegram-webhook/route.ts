@@ -8,11 +8,22 @@ const ALLOWED_CHAT_ID = process.env.TELEGRAM_CHAT_ID!;
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
-async function sendTelegramMessage(chatId: number, text: string) {
+async function sendTelegramMessage(chatId: number, text: string, showKeyboard: boolean = true) {
+  const keyboard = showKeyboard ? {
+    reply_markup: {
+      keyboard: [
+        [{ text: "📸 Envoyer une photo" }],
+        [{ text: "🗑 Supprimer le menu" }]
+      ],
+      resize_keyboard: true,
+      persistent: true
+    }
+  } : {};
+
   await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text }),
+    body: JSON.stringify({ chat_id: chatId, text, ...keyboard }),
   });
 }
 
@@ -89,9 +100,9 @@ export async function POST(request: NextRequest) {
       if (text === "/start") {
         await sendTelegramMessage(
           chatId,
-          `👋 Bienvenue ! \n\n📸 Envoyez une photo pour mettre à jour le menu du jour.\n\n🗑 Envoyez /supprimer pour retirer le menu du jour du site.\n\nVotre Chat ID: ${chatId}`
+          `👋 Bienvenue ! \n\n📸 Envoyez une photo pour mettre à jour le menu du jour.\n\n🗑 Cliquez sur "Supprimer le menu" pour le retirer du site.`
         );
-      } else if (text === "/supprimer" || text === "/effacer" || text === "/delete") {
+      } else if (text === "/supprimer" || text === "/effacer" || text === "/delete" || text === "🗑 supprimer le menu") {
         // Supprimer le menu du jour
         const { error } = await supabase.storage.from("menu-du-jour").remove(["menu-du-jour.jpg"]);
         
@@ -103,10 +114,15 @@ export async function POST(request: NextRequest) {
             "✅ Menu du jour supprimé ! Il n'apparaît plus sur le site."
           );
         }
+      } else if (text === "📸 envoyer une photo") {
+        await sendTelegramMessage(
+          chatId,
+          "📸 Envoyez-moi la photo du menu du jour !"
+        );
       } else {
         await sendTelegramMessage(
           chatId,
-          "📸 Envoyez une photo pour mettre à jour le menu du jour.\n🗑 Envoyez /supprimer pour le retirer du site."
+          "📸 Envoyez une photo pour mettre à jour le menu du jour.\n🗑 Ou cliquez sur \"Supprimer le menu\" pour le retirer."
         );
       }
     }
