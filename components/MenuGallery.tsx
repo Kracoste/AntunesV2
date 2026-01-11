@@ -141,7 +141,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               <button
                 key={image.id}
                 type="button"
-                className={styles.thumbnail}
+                className={image.id === "menu-du-jour" ? styles.thumbnailMenuDuJour : styles.thumbnail}
                 onClick={() => openImage(image)}
                 aria-label={`Agrandir ${image.alt}`}
               >
@@ -149,8 +149,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className={styles.thumbnailImage}
-                    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover" }}
+                    className={styles.thumbnailImageMenuDuJour}
                   />
                 ) : (
                   <Image
