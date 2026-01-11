@@ -84,15 +84,29 @@ export async function POST(request: NextRequest) {
 
     // Si c'est un message texte (commande /start par exemple)
     if (message.text) {
-      if (message.text === "/start") {
+      const text = message.text.toLowerCase().trim();
+      
+      if (text === "/start") {
         await sendTelegramMessage(
           chatId,
-          `👋 Bienvenue ! \n\nEnvoyez une photo pour mettre à jour le menu du jour sur le site.\n\nVotre Chat ID: ${chatId}`
+          `👋 Bienvenue ! \n\n📸 Envoyez une photo pour mettre à jour le menu du jour.\n\n🗑 Envoyez /supprimer pour retirer le menu du jour du site.\n\nVotre Chat ID: ${chatId}`
         );
+      } else if (text === "/supprimer" || text === "/effacer" || text === "/delete") {
+        // Supprimer le menu du jour
+        const { error } = await supabase.storage.from("menu-du-jour").remove(["menu-du-jour.jpg"]);
+        
+        if (error) {
+          await sendTelegramMessage(chatId, `❌ Erreur lors de la suppression: ${error.message}`);
+        } else {
+          await sendTelegramMessage(
+            chatId,
+            "✅ Menu du jour supprimé ! Il n'apparaît plus sur le site."
+          );
+        }
       } else {
         await sendTelegramMessage(
           chatId,
-          "📸 Envoyez une photo du menu du jour pour le mettre à jour sur le site."
+          "📸 Envoyez une photo pour mettre à jour le menu du jour.\n🗑 Envoyez /supprimer pour le retirer du site."
         );
       }
     }
