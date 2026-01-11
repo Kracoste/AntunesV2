@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/MenuGallery.module.css";
 
+const SUPABASE_URL = "https://emmkywnwjamcfprywihw.supabase.co";
+
 type GalleryImage = {
   id: string;
   src: string;
@@ -19,29 +21,50 @@ export function MenuGallery({ images }: MenuGalleryProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [menuDuJour, setMenuDuJour] = useState<GalleryImage | null>(null);
+
+  // Charger le menu du jour depuis Supabase
+  useEffect(() => {
+    const url = `${SUPABASE_URL}/storage/v1/object/public/menu-du-jour/menu-du-jour.jpg`;
+    fetch(url, { method: "HEAD" })
+      .then((res) => {
+        if (res.ok) {
+          setMenuDuJour({
+            id: "menu-du-jour",
+            src: `${url}?t=${Date.now()}`,
+            alt: "Menu du jour",
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Combiner le menu du jour avec les autres images
+  const allImages = menuDuJour ? [menuDuJour, ...images] : images;
+  const menuImages = menuDuJour ? [menuDuJour, ...images.slice(0, 5)] : images.slice(0, 5);
 
   const minSwipeDistance = 50;
 
   const getCurrentIndex = useCallback(() => {
     if (!activeImage) return -1;
-    return images.findIndex((img) => img.id === activeImage.id);
-  }, [activeImage, images]);
+    return allImages.findIndex((img) => img.id === activeImage.id);
+  }, [activeImage, allImages]);
 
   const goToNext = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % images.length;
-    setActiveImage(images[nextIndex]);
+    const nextIndex = (currentIndex + 1) % allImages.length;
+    setActiveImage(allImages[nextIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, images]);
+  }, [getCurrentIndex, allImages]);
 
   const goToPrevious = useCallback(() => {
     const currentIndex = getCurrentIndex();
     if (currentIndex === -1) return;
-    const previousIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setActiveImage(images[previousIndex]);
+    const previousIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+    setActiveImage(allImages[previousIndex]);
     setIsZoomed(false);
-  }, [getCurrentIndex, images]);
+  }, [getCurrentIndex, allImages]);
 
   const close = useCallback(() => {
     setActiveImage(null);
@@ -114,7 +137,7 @@ export function MenuGallery({ images }: MenuGalleryProps) {
             <p>Les cartes du moment pour vos déjeuners, dîners et douceurs à partager.</p>
           </div>
           <div className={styles.grid}>
-            {images.slice(0, 5).map((image) => (
+            {menuImages.map((image) => (
               <button
                 key={image.id}
                 type="button"
@@ -122,16 +145,25 @@ export function MenuGallery({ images }: MenuGalleryProps) {
                 onClick={() => openImage(image)}
                 aria-label={`Agrandir ${image.alt}`}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  priority
-                  loading="eager"
-                  quality={85}
-                  className={styles.thumbnailImage}
-                  sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
-                />
+                {image.id === "menu-du-jour" ? (
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className={styles.thumbnailImage}
+                    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                ) : (
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    priority
+                    loading="eager"
+                    quality={85}
+                    className={styles.thumbnailImage}
+                    sizes="(min-width: 1024px) 180px, (min-width: 768px) 140px, 45vw"
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -225,15 +257,24 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               aria-label={isZoomed ? "Revenir à la taille standard" : "Afficher en plus grand"}
             >
               <div className={styles.lightboxImageFrame}>
-                <Image
-                  src={activeImage.src}
-                  alt={activeImage.alt}
-                  fill
-                  priority
-                  quality={100}
-                  className={styles.lightboxImage}
-                  sizes="(min-width: 1400px) 1200px, (min-width: 768px) 90vw, 95vw"
-                />
+                {activeImage.id === "menu-du-jour" ? (
+                  <img
+                    src={activeImage.src}
+                    alt={activeImage.alt}
+                    className={styles.lightboxImage}
+                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  />
+                ) : (
+                  <Image
+                    src={activeImage.src}
+                    alt={activeImage.alt}
+                    fill
+                    priority
+                    quality={100}
+                    className={styles.lightboxImage}
+                    sizes="(min-width: 1400px) 1200px, (min-width: 768px) 90vw, 95vw"
+                  />
+                )}
               </div>
             </button>
             <p className={helperTextClassName}>
