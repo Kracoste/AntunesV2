@@ -38,11 +38,11 @@ export async function POST(request: NextRequest) {
 
     const chatId = message.chat.id;
 
-    // Vérifier que c'est bien toi qui envoie (sécurité)
-    if (ALLOWED_CHAT_ID && chatId.toString() !== ALLOWED_CHAT_ID) {
-      await sendTelegramMessage(chatId, "❌ Vous n'êtes pas autorisé à utiliser ce bot.");
-      return NextResponse.json({ ok: true });
-    }
+    // Sécurité désactivée pour le moment - tout le monde peut utiliser le bot
+    // if (ALLOWED_CHAT_ID && chatId.toString() !== ALLOWED_CHAT_ID) {
+    //   await sendTelegramMessage(chatId, "❌ Vous n'êtes pas autorisé à utiliser ce bot.");
+    //   return NextResponse.json({ ok: true });
+    // }
 
     // Si c'est une photo
     if (message.photo && message.photo.length > 0) {
