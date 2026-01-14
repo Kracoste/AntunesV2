@@ -58,8 +58,13 @@ export function Footer({ socialMedia }: FooterProps) {
         
         <p className={styles.credit}>
           Site réalisé par{" "}
-          <a href="tel:0685643340" className={styles.creditLink}>
-            Webinova
+          <a 
+            href="https://www.webonia.fr/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.creditLink}
+          >
+            Webonia
           </a>
         </p>
       </div>
