@@ -19,8 +19,6 @@ type MenuGalleryProps = {
 export function MenuGallery({ images }: MenuGalleryProps) {
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [menuDuJour, setMenuDuJour] = useState<GalleryImage | null>(null);
 
   // Charger le menu du jour depuis Supabase
@@ -42,8 +40,6 @@ export function MenuGallery({ images }: MenuGalleryProps) {
   // Combiner le menu du jour avec les autres images
   const allImages = menuDuJour ? [menuDuJour, ...images] : images;
   const menuImages = menuDuJour ? [menuDuJour, ...images.slice(0, 5)] : images.slice(0, 5);
-
-  const minSwipeDistance = 50;
 
   const getCurrentIndex = useCallback(() => {
     if (!activeImage) return -1;
@@ -75,38 +71,6 @@ export function MenuGallery({ images }: MenuGalleryProps) {
     setActiveImage(image);
     setIsZoomed(false);
   }, []);
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    // Ne pas gérer le swipe si on est en mode zoom
-    if (isZoomed) return;
-    // Ne pas gérer le swipe si c'est un pinch (2 doigts)
-    if (e.targetTouches.length > 1) return;
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    // Ne pas gérer le swipe si on est en mode zoom
-    if (isZoomed) return;
-    // Ne pas gérer le swipe si c'est un pinch (2 doigts)
-    if (e.targetTouches.length > 1) return;
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    // Ne pas gérer le swipe si on est en mode zoom
-    if (isZoomed) return;
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    if (isLeftSwipe) {
-      goToNext();
-    }
-    if (isRightSwipe) {
-      goToPrevious();
-    }
-  };
 
   useEffect(() => {
     if (!activeImage) return;
@@ -216,9 +180,6 @@ export function MenuGallery({ images }: MenuGalleryProps) {
           aria-modal="true"
           aria-label={activeImage.alt}
           onClick={close}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
         >
           <div className={styles.lightboxInner} onClick={(event) => event.stopPropagation()}>
             <button
