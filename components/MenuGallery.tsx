@@ -77,15 +77,25 @@ export function MenuGallery({ images }: MenuGalleryProps) {
   }, []);
 
   const onTouchStart = (e: React.TouchEvent) => {
+    // Ne pas gérer le swipe si on est en mode zoom
+    if (isZoomed) return;
+    // Ne pas gérer le swipe si c'est un pinch (2 doigts)
+    if (e.targetTouches.length > 1) return;
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
+    // Ne pas gérer le swipe si on est en mode zoom
+    if (isZoomed) return;
+    // Ne pas gérer le swipe si c'est un pinch (2 doigts)
+    if (e.targetTouches.length > 1) return;
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const onTouchEnd = () => {
+    // Ne pas gérer le swipe si on est en mode zoom
+    if (isZoomed) return;
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
@@ -256,24 +266,12 @@ export function MenuGallery({ images }: MenuGalleryProps) {
               aria-label={isZoomed ? "Revenir à la taille standard" : "Afficher en plus grand"}
             >
               <div className={styles.lightboxImageFrame}>
-                {activeImage.id === "menu-du-jour" ? (
-                  <img
-                    src={activeImage.src}
-                    alt={activeImage.alt}
-                    className={styles.lightboxImage}
-                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                  />
-                ) : (
-                  <Image
-                    src={activeImage.src}
-                    alt={activeImage.alt}
-                    fill
-                    priority
-                    quality={100}
-                    className={styles.lightboxImage}
-                    sizes="(min-width: 1400px) 1200px, (min-width: 768px) 90vw, 95vw"
-                  />
-                )}
+                <img
+                  src={activeImage.src}
+                  alt={activeImage.alt}
+                  className={styles.lightboxImage}
+                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                />
               </div>
             </button>
             <p className={helperTextClassName}>
