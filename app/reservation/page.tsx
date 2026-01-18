@@ -35,7 +35,7 @@ export default function ReservationPage() {
         </ul>
         <p className={styles.note}>
           Besoin d&apos;une table ? Contactez-nous au <a href="tel:0549968690">05 49 96 86 90</a> ou
-          écrivez-nous à <a href="mailto:contact@restaurant-antunes.fr">contact@restaurant-antunes.fr</a>.
+          écrivez-nous à <a href="mailto:lantunesrestaurant@gmail.com">lantunesrestaurant@gmail.com</a>.
         </p>
       </section>
     </div>
