@@ -78,9 +78,10 @@ export const restaurantInfo = {
   email: "lantunesrestaurant@gmail.com",
   address: "3 Rue des Cailloux, 79330 Coulonges-Thouarsais",
   hours: [
-    "Lundi - Jeudi : 9h - 21h",
-    "Vendredi : 9h - 23h30",
-    "Samedi : 9h - 23h30",
+    "Lundi - Mardi : 9h - 21h",
+    "Mercredi : Fermé",
+    "Jeudi : 9h - 21h",
+    "Vendredi - Samedi : 9h - 23h30",
     "Dimanche : 9h - 18h",
   ],
   mapEmbedUrl:
