@@ -80,7 +80,7 @@ export const restaurantInfo = {
   hours: [
     "Lundi - Mardi : 9h - 15h",
     "Mercredi : Jour De Fermeture",
-    "Jeudi : 9h - 21h",
+    "Jeudi : 9h - 15h / 15h - 21h (Restaurant Fermé le soir bar ouvert)",
     "Vendredi - Samedi : 9h - 23h30",
     "Dimanche : 9h - 15h",
   ],
