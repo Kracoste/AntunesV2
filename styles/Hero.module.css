@@ -121,6 +121,7 @@
 @media (max-width: 900px) {
   .hero {
     padding: 1.5rem 0 2.5rem;
+    margin-top: 0;
   }
 
   .inner {
@@ -155,6 +156,7 @@
 @media (max-width: 640px) {
   .hero {
     padding: 1rem 0 2rem;
+    margin-top: 0;
   }
 
   .inner {
