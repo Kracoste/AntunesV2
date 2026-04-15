@@ -1,16 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Hero.module.css";
 
 type HeroProps = {
-  imageSrc: string;
-  imageAlt?: string;
+  videoSrc: string;
   tagline: string;
   ctaLabel: string;
   ctaHref: string;
 };
 
-export function Hero({ imageSrc, imageAlt = "Salle du restaurant", tagline, ctaLabel, ctaHref }: HeroProps) {
+export function Hero({ videoSrc, tagline, ctaLabel, ctaHref }: HeroProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.inner}>
@@ -32,13 +30,12 @@ export function Hero({ imageSrc, imageAlt = "Salle du restaurant", tagline, ctaL
         </div>
         <div className={styles.visual}>
           <div className={styles.imageFrame}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              priority
-              quality={100}
-              sizes="(min-width: 1200px) 600px, (min-width: 768px) 70vw, 95vw"
+            <video
+              src={videoSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
               className={styles.image}
             />
           </div>

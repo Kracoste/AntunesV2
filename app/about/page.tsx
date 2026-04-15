@@ -17,11 +17,11 @@ const values = [
     isImage: true
   },
   {
-    icon: "👨‍🍳",
+    icon: "/images/Boisson/cotedebeuf.jpeg",
     title: "Savoir-faire",
     description:
       "Notre équipe met tout son savoir-faire à votre service pour une cuisine authentique et raffinée.",
-    isImage: false
+    isImage: true
   },
   {
     icon: "/images/plat.jpg",
